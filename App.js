@@ -19,11 +19,6 @@ const Header = () => {
     )
 }
 
-// const Stylecard = {
-//     backgroundColor:"orange"
-// }
-
-
 
 const RestList = [
     {
@@ -1029,15 +1024,17 @@ const RestList = [
 ];
 const Restaurantcard= (props) => {
     const {RestData} = props
+    const {cloudinaryImageId , id , name ,costForTwo ,cuisines}= RestData
+    console.log(props)
    return(
      <div className='res-card' style={{
         backgroundColor:"orange"
      }}>
-        <img alt='Barbeque Nation' className='res-logo' src={'https://media-assets.swiggy.com/swiggy/image/upload/'+ RestData.info.cloudinaryImageId}></img>
-        <h4>{RestData.info.id}</h4>
-        <h4>{RestData.info.name}</h4>
-        <h4>Cost ForTwo{RestData.info.costForTwo/100}</h4>
-        <h4>{RestData.info.cuisines.join(', ')}</h4>
+        <img alt='Barbeque Nation' className='res-logo' src={'https://media-assets.swiggy.com/swiggy/image/upload/'+ cloudinaryImageId}></img>
+        <h4>{id}</h4>
+        <h4>{name}</h4>
+        <h4>Cost ForTwo{costForTwo/100}</h4>
+        <h4>{cuisines.join(', ')}</h4>
      </div>
    )
 }
@@ -1051,7 +1048,7 @@ const Body = () => {
           search
         </div>
         <div className='res-container'>
-            <Restaurantcard RestData={RestList[0]}/>
+            {/* <Restaurantcard RestData={RestList[0]}/>
             <Restaurantcard RestData={RestList[1]}/>
             <Restaurantcard RestData={RestList[2]}/>
             <Restaurantcard RestData={RestList[3]}/>
@@ -1060,10 +1057,12 @@ const Body = () => {
             <Restaurantcard RestData={RestList[6]}/>
             <Restaurantcard RestData={RestList[7]}/>
             <Restaurantcard RestData={RestList[8]}/>
-            <Restaurantcard RestData={RestList[9]}/>
-        {/* // {RestList.map((restaurant) => ( */}
-        {/* //  <Restaurantcard key={restaurant.info.id} RestData={restaurant.info} />
-        // ))} */}
+            <Restaurantcard RestData={RestList[9]}/> */}
+            {
+              RestList.map((restaurant)=>
+                <Restaurantcard key={restaurant.info} RestData={restaurant.info}/>
+              )
+            }
         </div>
     </div>
  )
