@@ -35,7 +35,7 @@ li{
 }
 .res-card{
     width: 400px;
-    height: 380px;
+    /* height: 400px; */
     padding: 5px;
     margin: 5px;
 }
@@ -54,4 +54,12 @@ li{
     width: 230px;
     height: 200px;
     /* margin:2px */
+}
+
+.filter-btn:hover{
+   cursor: pointer;
+}
+
+.filter-btn{
+    margin:10px;
 }
