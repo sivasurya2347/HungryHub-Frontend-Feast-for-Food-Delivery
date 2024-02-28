@@ -1,25 +1,29 @@
 import RestaurantCard from "./RestaurantCard";
+import { useState } from "react";
 import RestList from "../utils/constants";
 
+
 const Body = () => {
+    const [Listofrest,setListofrest] = useState(RestList);
+
     return(
-       <div className='body'>
-           <div className='search'>
-             search
+       <div className="body">
+           <div className="filter" >
+             <button 
+             className="filter-btn" onClick={ () => {
+                 const filtering = Listofrest.filter(
+                    (res) => res.info.avgRating>4.3
+                 );
+                 setListofrest(filtering);
+                 }}
+                 >
+                Filter-Top-Rated-Restaurant
+             </button>
            </div>
            <div className='res-container'>
-               {/* <Restaurantcard RestData={RestList[0]}/>
-               <Restaurantcard RestData={RestList[1]}/>
-               <Restaurantcard RestData={RestList[2]}/>
-               <Restaurantcard RestData={RestList[3]}/>
-               <Restaurantcard RestData={RestList[4]}/>
-               <Restaurantcard RestData={RestList[5]}/>
-               <Restaurantcard RestData={RestList[6]}/>
-               <Restaurantcard RestData={RestList[7]}/>
-               <Restaurantcard RestData={RestList[8]}/>
-               <Restaurantcard RestData={RestList[9]}/> */}
+               {/* <Restaurantcard RestData={RestList[0]}/> */}
                {
-                 RestList.map((restaurant)=>
+                 Listofrest.map((restaurant)=>
                    <RestaurantCard key={restaurant.info.id} RestData={restaurant}/>
                  )
                }
