@@ -34,7 +34,7 @@ li{
     flex-wrap:wrap ;
 }
 .res-card{
-    width: 400px;
+    width: 300px;
     /* height: 400px; */
     padding: 5px;
     margin: 5px;
@@ -45,13 +45,8 @@ li{
     cursor: pointer;
 }
 
-.search{
-    padding:10px;
-    margin:10px
-}
 
 .res-logo{
-    width: 230px;
     height: 200px;
     /* margin:2px */
 }
@@ -62,4 +57,20 @@ li{
 
 .filter-btn{
     margin:10px;
+}
+
+
+.Shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Shimmer-card{
+    background-color:#f0f0f0;
+    width: 250px;
+    height: 420px;
+    margin:5px;
+}
+
+.login-btn{
+    padding:10px 20px;
 }
