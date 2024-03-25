@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard ,{OfferReastaurantCard}from "./RestaurantCard";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer"
 import useonlineStatus from "../utils/useonlineStatus";
@@ -13,6 +13,11 @@ const Body = () => {
       const Toprated = Listofrest.filter((res) => res.info.avgRating>4.3)
       setFilterListofrest(Toprated)
     }
+    
+    const Offerscard = OfferReastaurantCard(RestaurantCard)
+     
+    // console.log(Listofrest[0].info.aggregatedDiscountInfoV3.header)
+    //  .Listofrest[0].info.aggregatedDiscountInfoV3.header
    
     useEffect(()=>{fetchData()},[]);
 
@@ -34,7 +39,7 @@ const Body = () => {
     }
 
     return(
-       <div className="body">
+       <div className="ml-4">
         <div className="flex">
           <input className="border border-solid border-black m-4 px-12" 
           type="text"
@@ -57,10 +62,15 @@ const Body = () => {
            </div>
         </div>
            <div className='flex flex-wrap'>
-               {/* <Restaurantcard RestData={RestList[0]}/> */}
                {
                     FilterListofrest.map((restaurant)=>
-                   <Link to={"/restaurants/"+restaurant.info.id}key={restaurant.info.id}><RestaurantCard RestData={restaurant}/></Link>
+                   <Link to={"/restaurants/"+restaurant.info.id}key={restaurant.info.id}>
+                    {restaurant.info.aggregatedDiscountInfoV3 && restaurant.info.aggregatedDiscountInfoV3.header && restaurant.info.aggregatedDiscountInfoV3.header.includes("OFF") ?
+                     <Offerscard RestData={restaurant}/> :
+                     <RestaurantCard RestData={restaurant}/>
+                    }
+                    {/* <RestaurantCard RestData={restaurant}/> */}
+                    </Link>
                  )
                }
            </div>
