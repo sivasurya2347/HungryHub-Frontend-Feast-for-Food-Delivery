@@ -9,13 +9,26 @@ import Contact from './components/Contact'
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu'
 import Shimmer from './components/Shimmer'
+import { useContext,useState,useEffect } from 'react'
+import SampleContext from './utils/sampleContext'
 
 const AppLayout = () => {
+    const [userName,setuserName]=useState('')
+
+    useEffect(()=>{
+        const data = {
+            name : "siva"
+        }
+        setuserName(data.name)
+    },[])
+
     return(
+        <SampleContext.Provider value = {{loggeduser : userName,setuserName}}>
         <div>
             <Header/>
-            <Outlet />
+            <Outlet /> 
         </div>
+        </SampleContext.Provider>
     )
 };
 

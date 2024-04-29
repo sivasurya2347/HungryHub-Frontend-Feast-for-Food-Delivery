@@ -1,7 +1,8 @@
 import { LOGO_URL } from "../utils/url";
-import { useState , useEffect } from "react";
+import { useState , useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useonlineStatus from "../utils/useonlineStatus";
+import SampleContext from "../utils/sampleContext";
 const Header = () => {
     const [Lbtn,setLbtn] = useState("Login");
 
@@ -9,6 +10,7 @@ const Header = () => {
     },[])
 
     const status = useonlineStatus();
+    const {loggeduser} = useContext(SampleContext)
     return(
     <div className='flex justify-between  bg-green-300 shadow-lg'>
       <div className='w-52'>
@@ -16,7 +18,7 @@ const Header = () => {
       </div>
       <div>
             <ul className="flex items-center m-10">
-                <li className="p-4">OnlinStatus:{status ? "Online":"Offline"}</li>
+                <li className="p-4">OnlinStatus:{status ? "✅":"🔴"}</li>
                 <li className="p-4">
                 <Link to="/">Home</Link>
                 </li>
@@ -32,6 +34,7 @@ const Header = () => {
                 }}>
                  {Lbtn}
                  </button>
+                 <li className="px-3 font-bold">{loggeduser}</li>
             </ul>
         </div>
     </div>
