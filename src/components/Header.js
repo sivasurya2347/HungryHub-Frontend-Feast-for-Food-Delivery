@@ -3,11 +3,16 @@ import { useState , useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useonlineStatus from "../utils/useonlineStatus";
 import SampleContext from "../utils/sampleContext";
+import { useSelector } from "react-redux";
+
 const Header = () => {
     const [Lbtn,setLbtn] = useState("Login");
 
     useEffect(() => {
     },[])
+  
+    const cartItems = useSelector((store)=>store.cart.items)
+    console.log(cartItems)
 
     const status = useonlineStatus();
     const {loggeduser} = useContext(SampleContext)
@@ -28,7 +33,9 @@ const Header = () => {
                 <li className="p-4">
                     <Link to="/contact">Contact Us</Link>
                 </li>
-                <li className="p-4">Cart</li>
+                <li className="p-4 font-bold text-lg">
+                    <Link to="/cart">Cart  ({cartItems.length})</Link>
+                </li>
                 <button className="login-btn" onClick={()=>{
                  Lbtn==="Login"? setLbtn("Logout") : setLbtn("Login");
                 }}>
