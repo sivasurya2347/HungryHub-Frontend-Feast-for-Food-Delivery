@@ -11,6 +11,9 @@ import RestaurantMenu from './components/RestaurantMenu'
 import Shimmer from './components/Shimmer'
 import { useContext,useState,useEffect } from 'react'
 import SampleContext from './utils/sampleContext'
+import { Provider } from 'react-redux'
+import appStore from './redux/appStore'
+import Cart from './components/Cart'
 
 const AppLayout = () => {
     const [userName,setuserName]=useState('')
@@ -23,12 +26,14 @@ const AppLayout = () => {
     },[])
 
     return(
+        <Provider store={appStore}>
         <SampleContext.Provider value = {{loggeduser : userName,setuserName}}>
         <div>
             <Header/>
             <Outlet /> 
         </div>
         </SampleContext.Provider>
+        </Provider>
     )
 };
 
@@ -50,6 +55,10 @@ const appRouter = createBrowserRouter([
             {
                 path : "/contact",
                 element : <Contact/>
+            },
+            {
+                path : "/cart",
+                element : <Cart/>
             },
             {
                 path : "/restaurants/:restId",
