@@ -10,13 +10,22 @@ const RestaurantCard= (props) => {
    const data = useContext(SampleContext)
    console.log(data)
    return(
-     <div className='p-6 m-4 w-[250px] border-solid border-black  bg-gray-200 rounded-lg hover:cursor-pointer hover:size-64 hover:bg-slate-700' >
-        <img alt='Barbeque Nation' className="rounded-sm" src={CDN_URL + cloudinaryImageId}></img>
+     <div className='p-10 m-8 w-[350px] h-[430px] border-solid border-black bg-gray-200
+     flex-col
+     rounded-lg hover:cursor-pointer hover:bg-slate-400 hover:animate-pulse
+     transition duration-150 ease-out hover:ease-in' >
+      <div className="h-[50%]">
+           <img alt='Barbeque Nation' className="rounded-xl w-[100%] h-[90%] border-solid" 
+           src={CDN_URL + cloudinaryImageId}>
+           </img>
+      </div>
+      <div className="W-[60%] h-[55%]">
         <h4 className="font-bold text-lg py-4">{name}</h4>
-        <h4>Cost ForTwo{costForTwo}</h4>
+        <h4>{costForTwo}</h4>
         <h4>{cuisines.join(', ')}</h4>
         <h4>{avgRating}</h4>
         <h4>{data.loggeduser}</h4>
+      </div>
      </div>
    )
 }
